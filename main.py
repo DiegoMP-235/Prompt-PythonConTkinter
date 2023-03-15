@@ -6,8 +6,6 @@ def muestraPrompt():
     myPrompt.esperarVentana()
     Valor_ingresado = myPrompt.getValue()
     print("El valor ingresado:"+Valor_ingresado)
-
-
 ventana = Tk()
 ventana.title("Mi ventana principal")
 ventana.geometry("350x350")

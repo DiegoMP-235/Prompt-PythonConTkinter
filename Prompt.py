@@ -10,9 +10,7 @@ class Prompt:
         self.__CajaTexto = self.__creaCajaTexto()
         self.__BotonGuardar = self.__creaBoton(TextButton)
         self.__value = ""
-        
-        
-        
+          
     def __creaVentana(self,TituloVentana):
         ventana = Toplevel(self.__NodoPadre)
         ventana.title(TituloVentana)
@@ -31,13 +29,13 @@ class Prompt:
         return cajaTexto
     
     def __creaBoton(self,textoBtn):
-        Boton = Button(self.__ventana,text=textoBtn,command=self.guardaTexto)
+        Boton = Button(self.__ventana,text=textoBtn,command=self.__guardaTexto)
         Boton.pack(pady = self.__PadY)
     
     def esperarVentana(self):
         self.__NodoPadre.wait_window(self.__ventana)
             
-    def guardaTexto(self):
+    def __guardaTexto(self):
         self.__value = self.__CajaTexto.get()
         self.cierraPrompt()    
     
