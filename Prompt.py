@@ -4,11 +4,13 @@ class Prompt:
     
     def __init__(self,NodoPadre,TituloVentana,LabelTitulo,TextButton):
         self.__NodoPadre = NodoPadre
+        self.__PadY = 5
         self.__ventana = self.__creaVentana(TituloVentana)
         self.__LabelTitle = self.__creaLabel(LabelTitulo)
         self.__CajaTexto = self.__creaCajaTexto()
         self.__BotonGuardar = self.__creaBoton(TextButton)
         self.__value = ""
+        
         
         
     def __creaVentana(self,TituloVentana):
@@ -20,17 +22,21 @@ class Prompt:
     
     def __creaLabel(self,LabelTitulo):
         etiqueta = Label(self.__ventana,text=LabelTitulo)
-        etiqueta.pack()
+        etiqueta.pack(pady = self.__PadY)
     
     def __creaCajaTexto(self):
         cajaTexto = Entry(self.__ventana)
-        cajaTexto.pack()
+        cajaTexto.pack(pady = self.__PadY)
+        cajaTexto.focus()
         return cajaTexto
     
     def __creaBoton(self,textoBtn):
         Boton = Button(self.__ventana,text=textoBtn,command=self.guardaTexto)
-        Boton.pack(pady=5)
-        
+        Boton.pack(pady = self.__PadY)
+    
+    def esperarVentana(self):
+        self.__NodoPadre.wait_window(self.__ventana)
+            
     def guardaTexto(self):
         self.__value = self.__CajaTexto.get()
         self.cierraPrompt()    
@@ -40,6 +46,3 @@ class Prompt:
         
     def getValue(self):
         return self.__value    
-    
-    def getVentana(self):
-        return self.__ventana
