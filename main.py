@@ -3,7 +3,7 @@ from Prompt import *
 
 def muestraPrompt():
     myPrompt = Prompt(ventana,"Mi prompt","Ingresa tu valor","Guardar")
-    ventana.wait_window(myPrompt.getVentana())
+    myPrompt.esperarVentana()
     Valor_ingresado = myPrompt.getValue()
     print("El valor ingresado:"+Valor_ingresado)
 
